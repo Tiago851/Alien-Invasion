@@ -97,7 +97,7 @@ class AlienInvasion:
 
 			self.sb.prep_score()
 			self.sb.prep_level()
-			self.sb.prep_ship()
+			self.sb.prep_ships()
 
 			#Reset the game statistics
 			self.stats.reset_stats()
@@ -261,14 +261,16 @@ class AlienInvasion:
 
 	def _ship_hit(self):
 		#Response when the shit collides with an allien
-
+		
+		self._quit_game()
+		
 		if self.stats.ships_left > 0:
 			#Decrement ships left
 			self.stats.ships_left -= 1
 
 			#The gamer loses a life/ship so the prep_ship needs to be called
 			#Update the scoreboard
-			self.sb.prep_ship()
+			self.sb.prep_ships()
 
 			#Get rid of any remaining aliens and bullets
 			self.aliens.empty()
